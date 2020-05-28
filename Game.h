@@ -193,12 +193,16 @@ void game_AI_G(bool game_over, int** game, int size, int win_size, int dif)
 		Logic(turn, &game_over, game, size, &win, win_size);
 		draw_G(game, size, &Window);
 		turn++;
+		if(Window.isOpen()==false)
+		{
+			break;
+		}
 	}
 	draw_G(game, size, &Window);
 	if (win == true)
 	{
 		std::cout << "Gra zakonczona." << std::endl;
-		if ((turn - 1) % -1 == 1)
+		if ((turn - 1) % 2 == 1)
 		{
 			std::cout << "Gre wygywa Gracz" << std::endl;
 		}
@@ -209,7 +213,8 @@ void game_AI_G(bool game_over, int** game, int size, int win_size, int dif)
 	}
 	else
 	{
-		std::cout << "Gra zakonczona remisem." << std::endl;
+		if (Window.isOpen() == true)
+			std::cout << "Gra zakonczona remisem." << std::endl;
 	}
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	system("cls");
@@ -230,12 +235,17 @@ void game_player_G(bool game_over, int** game, int size, int win_size)
 		Logic(turn, &game_over, game, size, &win, win_size);
 		draw_G(game, size, &Window);
 		turn++;
+		if(Window.isOpen()==false)
+		{
+			break;
+		}
+		
 	}
 	draw_G(game, size, &Window);
 	if (win == true)
 	{
 		std::cout << "Gra zakonczona." << std::endl;
-		if ((turn - 1) % -1 == 1)
+		if ((turn - 1) % 2 == 1)
 		{
 			std::cout << "Gre wygywa Gracz 1" << std::endl;
 		}
@@ -246,7 +256,8 @@ void game_player_G(bool game_over, int** game, int size, int win_size)
 	}
 	else
 	{
-		std::cout << "Gra zakonczona remisem." << std::endl;
+		if (Window.isOpen() == true)
+			std::cout << "Gra zakonczona remisem." << std::endl;
 	}
 
 	std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -280,7 +291,7 @@ void game_AI(bool game_over, int** game, int size, int win_size, int dif)
 	if (win == true)
 	{
 		std::cout << "Gra zakonczona." << std::endl;
-		if ((turn - 1) % -1 == 1)
+		if ((turn - 1) % 2 == 1)
 		{
 			std::cout << "Gre wygywa Gracz 1" << std::endl;
 		}
@@ -313,7 +324,7 @@ void game_player(bool game_over, int** game, int size, int win_size)
 	if (win == true)
 	{
 		std::cout << "Gra zakonczona." << std::endl;
-		if ((turn - 1) % -1 == 1)
+		if ((turn - 1) % 2 == 1)
 		{
 			std::cout << "Gre wygywa Gracz 1" << std::endl;
 		}

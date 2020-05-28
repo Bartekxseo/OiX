@@ -5,10 +5,20 @@ void player_turn(int** game, int size, sf::RenderWindow* Window, int turn)
 	sf::Event event;
 	bool eventdone = false;
 	int py, px, x = -1, y = -1;
-	while (!eventdone)
+	while (!eventdone && Window->isOpen()==true)
 	{
 		while (Window->waitEvent(event))
 		{
+			if(event.type == sf::Event::Closed)
+			{
+				Window->close();
+				break;
+			}
+			if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+			{
+				Window->close();
+				break;
+			}
 			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
 			{
 				px = event.mouseButton.x;
